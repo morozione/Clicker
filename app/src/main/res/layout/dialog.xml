@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="#31625b" />
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="casual"
+        android:gravity="center"
+        android:text="TextView"
+        android:layout_below="@id/tv_message"
+        android:textColor="#31625b"
+        android:textSize="30sp" />
+
+    <ImageView
+        android:id="@+id/iv_coins"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/coin"
+        android:layout_width="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="30dp"
+        android:layout_marginRight="25dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_coin"
+        android:layout_toLeftOf="@id/iv_coins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="casual"
+        android:gravity="center"
+        android:text="+5"
+        android:textColor="#e59f26"
+        android:textSize="30sp" />
+
+</RelativeLayout>
