@@ -1,4 +1,4 @@
-package com.example.i1.clicker;
+package com.morozione.clicker;
 
 /**
  * Created by morozione on 10/13/17.

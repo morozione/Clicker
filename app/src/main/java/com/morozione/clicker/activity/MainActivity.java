@@ -1,4 +1,4 @@
-package com.example.i1.clicker.activity;
+package com.morozione.clicker.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,9 +8,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.i1.clicker.R;
-import com.example.i1.clicker.Saver;
-import com.example.i1.clicker.dialog.DialogRecord;
+import com.morozione.clicker.R;
+import com.morozione.clicker.Saver;
+import com.morozione.clicker.dialog.DialogRecord;
 
 public class MainActivity extends AppCompatActivity implements DialogRecord.OnNewRecordListener {
 

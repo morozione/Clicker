@@ -1,4 +1,4 @@
-package com.example.i1.clicker.dialog;
+package com.morozione.clicker.dialog;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -11,9 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.i1.clicker.R;
-import com.example.i1.clicker.RecordManager;
-import com.example.i1.clicker.Saver;
+import com.morozione.clicker.R;
+import com.morozione.clicker.RecordManager;
+import com.morozione.clicker.Saver;
 
 /**
  * Created by morozione on 10/13/17.

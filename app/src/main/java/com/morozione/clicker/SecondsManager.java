@@ -1,4 +1,4 @@
-package com.example.i1.clicker;
+package com.morozione.clicker;
 
 import android.content.Context;
 import android.os.AsyncTask;

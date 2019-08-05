@@ -1,4 +1,4 @@
-package com.example.i1.clicker;
+package com.morozione.clicker;
 
 import android.graphics.Color;
 import android.widget.TextView;
