@@ -1,6 +1,8 @@
 package com.morozione.clicker
 
-class LevelsManager {
+import javax.inject.Inject
+
+class LevelsManager @Inject constructor() {
     private var level: Int = 1
     private var startRecord: Int = 35
 

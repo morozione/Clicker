@@ -38,10 +38,9 @@ class MainViewModel @Inject constructor(
 
     fun onStartClick() {
         _uiState.update { it.copy(isPlaying = true) }
-        // Navigate to ClickerActivity will be handled by the Activity
     }
 
-    fun onGameFinished(newRecord: Int, earnedCoins: Int) {
+    fun onGameFinished(newRecord: Int) {
         _uiState.update { 
             it.copy(
                 newRecord = newRecord,
@@ -50,20 +49,15 @@ class MainViewModel @Inject constructor(
             )
         }
         if (newRecord > uiState.value.record) {
-            updateRecord(newRecord, earnedCoins)
+            updateRecord(newRecord)
         }
     }
 
-    private fun updateRecord(newRecord: Int, earnedCoins: Int) {
+    private fun updateRecord(newRecord: Int) {
         viewModelScope.launch {
             saver.saveInt(newRecord, Saver.KEY_RECORD)
-            val updatedCoins = uiState.value.coins + earnedCoins
-            saver.saveInt(updatedCoins, Saver.KEY_COINS)
             _uiState.update {
-                it.copy(
-                    record = newRecord,
-                    coins = updatedCoins
-                )
+                it.copy(record = newRecord)
             }
         }
     }
@@ -71,4 +65,4 @@ class MainViewModel @Inject constructor(
     fun onRecordDialogDismiss() {
         _uiState.update { it.copy(showRecordDialog = false) }
     }
-} 
+}
