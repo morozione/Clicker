@@ -41,10 +41,10 @@ class ClickerViewModel @Inject constructor(
             startTimer()
             isTimerStarted = true
         }
-        
+
         val newClicks = _uiState.value.clicks + 1
         _uiState.update { it.copy(clicks = newClicks) }
-        
+
         checkLevelProgress()
     }
 
@@ -52,10 +52,15 @@ class ClickerViewModel @Inject constructor(
         viewModelScope.launch {
             secondsManager.startCountdown(viewModelScope)
                 .collect { seconds ->
-                    _uiState.update { it.copy(
-                        timeLeft = seconds,
-                        isGameFinished = seconds == 0
-                    )}
+                    _uiState.update {
+                        it.copy(
+                            timeLeft = seconds,
+                            isGameFinished = seconds == 0
+                        )
+                    }
+                    if (seconds == 0) {
+                        finishGame()
+                    }
                 }
         }
     }
@@ -65,9 +70,11 @@ class ClickerViewModel @Inject constructor(
         if (currentClicks >= levelsManager.getStartRecord()) {
             levelsManager.upperLevel()
             secondsManager.upperSecondsOnNewLevel()
-            _uiState.update { it.copy(
-                nextLevelTarget = levelsManager.getStartRecord()
-            )}
+            _uiState.update {
+                it.copy(
+                    nextLevelTarget = levelsManager.getStartRecord()
+                )
+            }
         }
     }
 
@@ -81,9 +88,17 @@ class ClickerViewModel @Inject constructor(
     }
 
     private fun updateCanBuyExtraTime() {
-        _uiState.update { it.copy(
-            canBuyExtraTime = coins >= 30
-        )}
+        _uiState.update {
+            it.copy(
+                canBuyExtraTime = coins >= 30
+            )
+        }
+    }
+
+    private fun finishGame() {
+        val coinsEarned = _uiState.value.clicks
+        coins += coinsEarned
+        saver.saveInt(coins, Saver.KEY_COINS)
     }
 
     override fun onCleared() {

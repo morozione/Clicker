@@ -41,15 +41,20 @@ class MainViewModel @Inject constructor(
     }
 
     fun onGameFinished(newRecord: Int) {
-        _uiState.update { 
-            it.copy(
-                newRecord = newRecord,
-                showRecordDialog = true,
-                isPlaying = false
-            )
-        }
-        if (newRecord > uiState.value.record) {
-            updateRecord(newRecord)
+        viewModelScope.launch {
+            val currentRecord = uiState.value.record
+            _uiState.update {
+                it.copy(
+                    newRecord = newRecord,
+                    showRecordDialog = true,
+                    isPlaying = false
+                )
+            }
+            if (newRecord > currentRecord) {
+                updateRecord(newRecord)
+            }
+
+            loadData()
         }
     }
 
